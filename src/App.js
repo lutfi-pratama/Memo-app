@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import MemoCard from "./components/MemoCard";
+import AddCard from "./components/AddCard";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
 
 function App() {
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputDetail, setInputDetail] = useState("");
+  const [cardContent, setCardContent] = useState([]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header>My Memo</header>
+      <AddCard
+        cardContent={cardContent}
+        setCardContent={setCardContent}
+        inputTitle={inputTitle}
+        setInputTitle={setInputTitle}
+        inputDetail={inputDetail}
+        setInputDetail={setInputDetail}
+      />
+
+      <div className="card__container">
+        {cardContent.map(e => (
+          <MemoCard
+            id={e.id}
+            title={e.title}
+            detail={e.detail}
+            cardContent={cardContent}
+            setCardContent={setCardContent}
+          />
+        ))}
+      </div>
     </div>
   );
 }
