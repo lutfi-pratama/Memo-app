@@ -8,6 +8,12 @@ function App() {
   const [inputTitle, setInputTitle] = useState("");
   const [inputDetail, setInputDetail] = useState("");
   const [cardContent, setCardContent] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+  // const [editCard, setEditCard] = useState({
+  //   id: null,
+  //   cond: false,
+  //   title: "",
+  // });
 
   return (
     <div className="App">
@@ -29,6 +35,8 @@ function App() {
             detail={e.detail}
             cardContent={cardContent}
             setCardContent={setCardContent}
+            modalShow={modalShow}
+            setModalShow={setModalShow}
           />
         ))}
       </div>
